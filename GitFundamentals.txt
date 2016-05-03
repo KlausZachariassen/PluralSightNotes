@@ -10,10 +10,12 @@ Options: Allow unix tools in Windows Command prompt
 
 Powerrshell: git --version
 
-mkdir, cd
+mkdir, cd, pwd
 git init (repository is created)
 
+
 CONFIGURE
+
 git config --system (Git\etc\gitconfig)
 git config --global (KLAUS\.gitconfig)
 git config (.git/config in repo)
@@ -27,6 +29,9 @@ git config --global color.ui auto
 git config --global core.dirgit configautocrlf true
 
 git config --global --list 
+
+
+COMMANDS
 
 git init
 
