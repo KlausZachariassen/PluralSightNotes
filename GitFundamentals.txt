@@ -1,0 +1,40 @@
+GIT FUNDAMENTALS
+----------------
+
+Download git: 
+msysgit
+
+Windows Explorer integration; GIT Windows Extensions (not Turtoise)
+
+Options: Allow unix tools in Windows Command prompt
+
+Powerrshell: git --version
+
+mkdir, cd
+git init (repository is created)
+
+CONFIGURE
+git config --system (Git\etc\gitconfig)
+git config --global (KLAUS\.gitconfig)
+git config (.git/config in repo)
+
+git config --global user.name "Klaus"
+git config --global core.editor notepad++
+
+git config --global help.autocorrect 1
+git config --global color.ui auto
+
+git config --global core.dirgit configautocrlf true
+
+git config --global --list 
+
+git init
+
+git status
+git log
+git add -u
+git add -A
+git commit -m "Commen	t"
+git diff HEAD~1..HEAD
+
+
