@@ -39,7 +39,36 @@ git status
 git log
 git add -u
 git add -A
-git commit -m "Commen	t"
+git commit -m "Comment"
+git commit -am "comment" (Add and commit)
 git diff HEAD~1..HEAD
 
 
+git clone https://github.com/jquery/jquery.git
+git shortlog
+git show HEAD
+
+
+git remote
+git remote -v
+git branch
+git branch -r
+git tag "Tag name"
+git tag
+
+// Move local repo to gitHub
+git remote add origin https://github.com/KlausZachariassen/GitFundamentals.git
+
+git push -u origin master
+
+// Didn't work
+git remote add origin git@github.com:KlausZachariassen/GitFundamentals.git
+
+git fetch
+git merge origin/master
+
+git branch --set-upstream master origin/master
+git pull
+
+git push
+git push --tags
