@@ -18,3 +18,93 @@ var age = ko.observable(25);
 </section>
 
 Right-most properties don't require () in html
+
+
+Example:
+
+	var vm = (function(){
+	  var Person = function(first, last) {
+		this.firstName = ko.observable(first);
+		this.lastName = ko.observable(last);
+		this.child = {};
+	  }
+
+	  var p1 = new Person('John', 'Papa');
+	  var p2 = new Person('Colleen', 'Papa');
+	  var p2a = new Person('Ella', 'Papa');
+
+	  p2.child = ko.observable(p2a);
+
+	  var people = ko.observableArray([p1, p1]);
+
+	  var bindingInfo = ko.computed(function(){
+		return.ko.toJSON(people, null, 2);
+	  });
+
+	  var vm = {
+		people = people,
+		bindingInfo = bindingInfo
+	  };
+
+	  return vm;
+	})();
+
+	ko.applyBindings(vm);
+
+Add to HTML:
+<pre data-bind="text: bindingInfo"></pre>
+
+SECOND METHOD
+<div data-bind="dump: people, enable: false"></div>
+
+Add dump.js:
+ko.bindingsHandlers.dump = {
+  init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+    var context = valueAccessor();
+	var allBindings = allBindingsAccessor();
+	var pre document.createElement('pre');
+	
+	element.appendChind(pre);
+
+	var dumpJSON = ko.computed({
+	  read: function() {
+	    var en = allBindings.enable == undefined || allBindings.enable;
+	    return en ? ko.toJSON(context, null, 2) : '';
+	  },
+	  disposeWhenNodeIsRemoved: element
+	});
+  
+	ko.applyBindingsToNode(pre, { 
+		text: dumpJSON,
+		visible: dumpJSON 
+	});
+  }
+
+  return {controlsDescendentBindings: true};
+}
+
+Change ko.toJSON to to JSON
+
+function toJSON(rootObject, replacer, spacer) {
+  var cache = [];
+  var plainJavaScriptObject = ko.toJS(rootObject);
+  var replacerFunction = replacer || cycleReplacer;
+  var output = ko.utils.stringifyJson(plainJavaScriptObject, replacerFunctioner, 2);
+  cache = null;
+  return output;
+}
+
+function cycleReplacer(key, value) {
+  if (typeof value === 'object' && value !== null) {
+	if (cache.indexOf(value) !== -1) {
+		// cycle is found - skip it
+		return;
+	}
+	cache.push(value);
+  }
+  return value;
+}
+
+
+Or:
+knockoutjs chrome plugin
