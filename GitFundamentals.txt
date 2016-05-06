@@ -61,6 +61,7 @@ git remote add origin https://github.com/KlausZachariassen/GitFundamentals.git
 
 git push -u origin master
 
+
 // Didn't work
 git remote add origin git@github.com:KlausZachariassen/GitFundamentals.git
 
@@ -72,3 +73,8 @@ git pull
 
 git push
 git push --tags
+
+
+73283145929fef738fdd0c854b7721d615da8912
+
+Access token

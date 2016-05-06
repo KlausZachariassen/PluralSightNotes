@@ -1,3 +1,20 @@
 ESSENTIAL KNOCKOUT AND JAVASCRIPT TIPS
 --------------------------------------
 
+Knockout course: Papa: Building HTML5 and Javascript Apps with MVVM and Knockout
+
+
+var name = ko.observable('Haley');
+var age = ko.observable(25);
+
+<section data-bind="foreach: speakers">
+    <article>
+        <div>
+            <img data-bind="attr: { src: imageName } " />
+            <address data-bind="text: firstName></address>
+            <address data-bind="text: lastName></address>
+        </div>
+    </article>
+</section>
+
+Right-most properties don't require () in html
