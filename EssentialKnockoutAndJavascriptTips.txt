@@ -64,7 +64,7 @@ ko.bindingsHandlers.dump = {
 	var allBindings = allBindingsAccessor();
 	var pre document.createElement('pre');
 	
-	element.appendChind(pre);
+	element.appendChild(pre);
 
 	var dumpJSON = ko.computed({
 	  read: function() {
@@ -108,3 +108,27 @@ function cycleReplacer(key, value) {
 
 Or:
 knockoutjs chrome plugin
+
+
+Reason to create a Custom Binding Handler
+* Manipulate the DOM (show/hide or the like)
+* Integrate with 3rd party widgets
+* Move Code from HTML to JavaScript
+* Reuse Presentation Logic
+
+<div data-bind="fadeVisible: canShowDetails()">
+</div>
+
+ko.bindingHandlers.fadeVisible = {
+  init: function (element, valueAccessor, ...) {
+  },
+  update: function (element, valueAccessor, allBindingsAccessors, ...) {
+  }
+}
+
+init: Runs the first time the binding is eval'ed
+update: After init, and every time one of its observable changes	
+
+element: The bound element in the DOM
+valueAccessor: What is passed to the binding
+allBindingsAccessors: All other bindings in the same data-bind attribute
